@@ -62,7 +62,7 @@ Ce projet a été conçu comme :
 
 ## Déploiement
 
-Le projet est destiné à être déployé en **mode statique** (GitHub Pages).
+Le projet est destiné à être déployé via Hostinger.
 
 ---
 
