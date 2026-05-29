@@ -88,12 +88,17 @@ export default function BookLayout({
         </div>
 
         {/* PAGE GAUCHE */}
-        <div className="absolute w-[400px] top-[27%] left-[15%] w-[34%] h-[50%]">
-          <div className="relative w-full h-full">{leftPage}</div>
+        <div className="absolute animate-fade top-[27%] left-[15%] w-[32%] h-[50%]">
+          <div key={page + "-left"} className="relative w-full h-full">
+            {leftPage}
+          </div>
         </div>
 
         {/* PAGE DROITE */}
-        <div className="absolute w-[400px] top-[27%] right-[10%] w-[34%] h-[50%]">
+        <div
+          key={page + "-right"}
+          className="absolute animate-fade top-[27%] right-[10%] w-[32.5%] h-[50%]"
+        >
           {rightPage}
         </div>
       </div>

@@ -23,7 +23,9 @@ export default function Market({ setOpen, page, setPage }: MarketProps) {
         <div className="absolute flex flex-col left-[8rem] top-[-3rem] gap-15">
           <h1 className="relative font-bold text-center">Monnaies</h1>
           {currencies.map((c) => (
-            <p key={c.name} className="relative left-[-6rem] font-sm">{c.name}</p>
+            <p key={c.name} className="relative left-[-6rem] font-sm">
+              {c.name}
+            </p>
           ))}
         </div>
       }
@@ -31,7 +33,9 @@ export default function Market({ setOpen, page, setPage }: MarketProps) {
         <div className="absolute flex flex-col left-[7rem] top-[-3rem] gap-15 text-center">
           <h2 className="relative font-bold">en Ducats</h2>
           {currencies.map((c) => (
-            <p key={c.name} className="relative font-sm">{c.baseValue}</p>
+            <p key={c.name} className="relative font-sm">
+              {c.baseValue}
+            </p>
           ))}
         </div>
       }
