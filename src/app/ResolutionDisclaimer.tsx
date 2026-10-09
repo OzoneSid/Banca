@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,7 +19,7 @@ export default function ResolutionDisclaimer({
     const checkAspectRatio = () => {
       const aspectRatio = window.innerWidth / window.innerHeight;
       const isMobile = window.innerWidth < 1024; // Tailwind breakpoint
-      const is16_9 = Math.abs(aspectRatio - 16 / 9) < 0.1; // 10% tolerance
+      const is16_9 = Math.abs(aspectRatio - 16 / 9);
       const shouldShow = !userAllowed && (isMobile || !is16_9);
 
       setShowDisclaimer(shouldShow);
@@ -46,39 +47,33 @@ export default function ResolutionDisclaimer({
     return (
       <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
         <div
-          className={`${inter.className} bg-amber-900 border-4 border-amber-700 rounded-lg p-4 sm:p-6 max-w-xs sm:max-w-sm mx-2 text-center shadow-2xl`}
+          className={`${inter.className} bg-gray-900 border-4 border-gray-600 rounded-lg p-4 sm:p-6 max-w-xs sm:max-w-sm mx-2 text-center shadow-2xl scale-[1.1]`}
         >
+          <Image
+            src="./assets/not-responsive-icon.svg"
+            alt=""
+            width={440}
+            height={390}
+            className="mx-auto mb-4 h-auto w-36 sm:w-40"
+          />
           {/* Title */}
           <h1 className="text-base sm:text-lg font-bold text-amber-100 mb-3">
-            Resolution Warning
+            Not responsive yet...
           </h1>
 
           {/* Description */}
           <p className="text-xs sm:text-sm text-amber-50 mb-3 leading-relaxed">
-            This application is optimized for{" "}
-            <strong>16:9 widescreen displays</strong> and
-            <strong> desktop devices</strong>.
-          </p>
-
-          <p className="text-[65%] sm:text-xs text-amber-100 mb-4">
-            Images and layout will not display correctly on mobile devices or
-            non-widescreen resolutions. While I am working on responsiveness,
-            please use a desktop computer with 16:9 screen for a proper
-            experience.
+            This application and assets are made on 16:9 and not optimized for{" "}
+            <strong>mobile devices</strong>.
           </p>
 
           {/* Button */}
           <button
             onClick={handleLoadAnyway}
-            className="px-4 sm:px-6 py-2 bg-amber-700 hover:bg-amber-600 text-amber-50 text-sm font-bold rounded-lg border-2 border-amber-600 transition-all hover:scale-105 active:scale-95"
+            className="px-4 sm:px-6 py-2 bg-gray-700 hover:bg-gray-500 text-orange-400 text-sm font-bold rounded-lg border-2 border-gray-600 transition-all hover:scale-105 active:scale-95"
           >
-            Load Anyway
+            Continue
           </button>
-
-          {/* Preferences */}
-          <p className="text-[55%] sm:text-xs text-amber-300 mt-3">
-            This choice will not be remembered on reload.
-          </p>
         </div>
       </div>
     );
